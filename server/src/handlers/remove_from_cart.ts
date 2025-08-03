@@ -1,15 +1,29 @@
 
+import { db } from '../db';
+import { cartItemsTable } from '../db/schema';
 import { type CartItem } from '../schema';
+import { eq } from 'drizzle-orm';
 
 export const removeFromCart = async (cartItemId: number): Promise<CartItem> => {
-    // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is removing an item from the shopping cart.
-    // This allows customers to delete items they no longer want to purchase.
+  try {
+    // Delete the cart item and return the deleted record
+    const result = await db.delete(cartItemsTable)
+      .where(eq(cartItemsTable.id, cartItemId))
+      .returning()
+      .execute();
+
+    if (result.length === 0) {
+      throw new Error(`Cart item with id ${cartItemId} not found`);
+    }
+
+    // Convert numeric fields back to numbers before returning
+    const cartItem = result[0];
     return {
-        id: cartItemId,
-        product_id: 0,
-        quantity: 0,
-        price: 0,
-        created_at: new Date()
-    } as CartItem;
-}
+      ...cartItem,
+      price: parseFloat(cartItem.price) // Convert string back to number
+    };
+  } catch (error) {
+    console.error('Cart item removal failed:', error);
+    throw error;
+  }
+};
