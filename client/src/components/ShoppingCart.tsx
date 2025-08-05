@@ -48,12 +48,30 @@ export function ShoppingCart({
 
   const handleCheckout = async () => {
     setIsProcessing(true);
-    // Simulate checkout process
-    setTimeout(() => {
-      alert('🎉 Terima kasih! Pesanan Anda akan segera diproses. Tim kami akan menghubungi Anda untuk konfirmasi.');
-      setIsProcessing(false);
-      onClose();
-    }, 2000);
+    
+    // Construct WhatsApp message
+    const messageHeader = "Halo, saya ingin memesan dari Toko Sembako Hidayat.\n\nDaftar Pesanan:\n";
+    
+    const itemsList = cartItems.map((item: CartItemWithProduct) => {
+      const itemTotal = calculateItemTotal(item);
+      return `- ${item.product.name} (${item.quantity}x) @ ${formatPrice(item.price)} = ${formatPrice(itemTotal)}`;
+    }).join('\n');
+    
+    const separator = "\n" + "-".repeat(20) + "\n";
+    const grandTotal = `Total Belanja: ${formatPrice(calculateGrandTotal())}`;
+    const messageFooter = "\n\nMohon diproses, terima kasih!";
+    
+    const fullMessage = messageHeader + itemsList + separator + grandTotal + messageFooter;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(fullMessage);
+    const whatsappUrl = `https://wa.me/6281234567890?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    setIsProcessing(false);
+    onClose();
   };
 
   return (

@@ -45,49 +45,49 @@ function App() {
         {
           id: 1, name: 'Beras Premium 5kg', description: 'Beras putih berkualitas tinggi', 
           price: 75000, stock_quantity: 50, category_id: 1, 
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzAwODA4MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJlcmFzPC90ZXh0Pjwvc3ZnPg==', created_at: new Date(),
           category: defaultCategories[0]
         },
         {
           id: 2, name: 'Minyak Goreng 2L', description: 'Minyak goreng kelapa sawit', 
           price: 35000, stock_quantity: 30, category_id: 2,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzIwQjJBQSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk1pbnlhazwvdGV4dD48L3N2Zz4=', created_at: new Date(),
           category: defaultCategories[1]
         },
         {
           id: 3, name: 'Gula Pasir 1kg', description: 'Gula pasir putih kristal', 
           price: 15000, stock_quantity: 40, category_id: 3,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzQ4RDFDQyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkd1bGE8L3RleHQ+PC9zdmc+', created_at: new Date(),
           category: defaultCategories[2]
         },
         {
           id: 4, name: 'Tepung Terigu 1kg', description: 'Tepung terigu protein sedang', 
           price: 12000, stock_quantity: 25, category_id: 1,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzQwRTBEMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkVwdW5nPC90ZXh0Pjwvc3ZnPg==', created_at: new Date(),
           category: defaultCategories[0]
         },
         {
           id: 5, name: 'Garam Dapur 500g', description: 'Garam dapur beryodium', 
           price: 5000, stock_quantity: 60, category_id: 3,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzAwQ0VEMSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkdhcmFtPC90ZXh0Pjwvc3ZnPg==', created_at: new Date(),
           category: defaultCategories[2]
         },
         {
           id: 6, name: 'Kecap Manis 600ml', description: 'Kecap manis kualitas premium', 
           price: 18000, stock_quantity: 35, category_id: 4,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzVGOUVBMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPktlY2FwPC90ZXh0Pjwvc3ZnPg==', created_at: new Date(),
           category: defaultCategories[3]
         },
         {
           id: 7, name: 'Sarden Kaleng', description: 'Sarden dalam saus tomat', 
           price: 12500, stock_quantity: 45, category_id: 5,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzQ2ODJCNCI+PC9yZWN0Pjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlNhcmRlbjwvdGV4dD48L3N2Zz4=', created_at: new Date(),
           category: defaultCategories[4]
         },
         {
           id: 8, name: 'Teh Celup 25pcs', description: 'Teh celup rasa original', 
           price: 8000, stock_quantity: 55, category_id: 6,
-          image_url: null, created_at: new Date(),
+          image_url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzJFOEI1NyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlRlaDwvdGV4dD48L3N2Zz4=', created_at: new Date(),
           category: defaultCategories[5]
         }
       ];
