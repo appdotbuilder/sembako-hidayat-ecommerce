@@ -34,11 +34,6 @@ export function ProductGrid({ products, onAddToCart }: ProductGridProps) {
 
         return (
           <Card key={product.id} className="group hover:shadow-lg transition-all duration-300 border-emerald-100 hover:border-emerald-200 bg-white">
-            <img
-              src={product.image_url || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI0NDQ0NDQyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+'}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded-t-xl mb-4"
-            />
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">

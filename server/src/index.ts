@@ -13,7 +13,8 @@ import {
   updateProductInputSchema,
   addToCartInputSchema,
   updateCartItemInputSchema,
-  searchProductsInputSchema
+  searchProductsInputSchema,
+  createOrderInputSchema
 } from './schema';
 
 // Import handlers
@@ -29,6 +30,7 @@ import { getCartItems } from './handlers/get_cart_items';
 import { addToCart } from './handlers/add_to_cart';
 import { updateCartItem } from './handlers/update_cart_item';
 import { removeFromCart } from './handlers/remove_from_cart';
+import { createOrder } from './handlers/create_order';
 
 const t = initTRPC.create({
   transformer: superjson,
@@ -79,6 +81,11 @@ const appRouter = router({
   removeFromCart: publicProcedure
     .input(z.number())
     .mutation(({ input }) => removeFromCart(input)),
+
+  // Order routes
+  createOrder: publicProcedure
+    .input(createOrderInputSchema)
+    .mutation(({ input }) => createOrder(input)),
 });
 
 export type AppRouter = typeof appRouter;

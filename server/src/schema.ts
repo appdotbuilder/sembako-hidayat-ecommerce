@@ -118,3 +118,44 @@ export const cartItemWithProductSchema = z.object({
 });
 
 export type CartItemWithProduct = z.infer<typeof cartItemWithProductSchema>;
+
+// Order schema
+export const orderSchema = z.object({
+  id: z.number(),
+  user_id: z.number().nullable(),
+  total_amount: z.number(),
+  status: z.string(),
+  created_at: z.coerce.date()
+});
+
+export type Order = z.infer<typeof orderSchema>;
+
+// Order item schema
+export const orderItemSchema = z.object({
+  id: z.number(),
+  order_id: z.number(),
+  product_id: z.number(),
+  quantity: z.number().int(),
+  price_at_purchase: z.number()
+});
+
+export type OrderItem = z.infer<typeof orderItemSchema>;
+
+// Create order input schema
+export const createOrderInputSchema = z.object({
+  cart_item_ids: z.array(z.number()).min(1)
+});
+
+export type CreateOrderInput = z.infer<typeof createOrderInputSchema>;
+
+// Order with items schema for future use
+export const orderWithItemsSchema = z.object({
+  id: z.number(),
+  user_id: z.number().nullable(),
+  total_amount: z.number(),
+  status: z.string(),
+  created_at: z.coerce.date(),
+  orderItems: z.array(orderItemSchema)
+});
+
+export type OrderWithItems = z.infer<typeof orderWithItemsSchema>;

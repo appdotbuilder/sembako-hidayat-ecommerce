@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import { MinusIcon, PlusIcon, TrashIcon, ShoppingBagIcon } from 'lucide-react';
+import { trpc } from '@/utils/trpc';
 import type { CartItemWithProduct } from '../../../server/src/schema';
 
 interface ShoppingCartProps {
@@ -13,6 +14,7 @@ interface ShoppingCartProps {
   cartItems: CartItemWithProduct[];
   onUpdateQuantity: (itemId: number, quantity: number) => void;
   onRemoveItem: (itemId: number) => void;
+  onCheckoutSuccess: () => void;
 }
 
 export function ShoppingCart({ 
@@ -20,7 +22,8 @@ export function ShoppingCart({
   onClose, 
   cartItems, 
   onUpdateQuantity, 
-  onRemoveItem 
+  onRemoveItem,
+  onCheckoutSuccess
 }: ShoppingCartProps) {
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -47,31 +50,26 @@ export function ShoppingCart({
   };
 
   const handleCheckout = async () => {
+    if (cartItems.length === 0) {
+      alert('Keranjang Anda kosong. Silakan tambahkan produk terlebih dahulu.');
+      return;
+    }
+
     setIsProcessing(true);
-    
-    // Construct WhatsApp message
-    const messageHeader = "Halo, saya ingin memesan dari Toko Sembako Hidayat.\n\nDaftar Pesanan:\n";
-    
-    const itemsList = cartItems.map((item: CartItemWithProduct) => {
-      const itemTotal = calculateItemTotal(item);
-      return `- ${item.product.name} (${item.quantity}x) @ ${formatPrice(item.price)} = ${formatPrice(itemTotal)}`;
-    }).join('\n');
-    
-    const separator = "\n" + "-".repeat(20) + "\n";
-    const grandTotal = `Total Belanja: ${formatPrice(calculateGrandTotal())}`;
-    const messageFooter = "\n\nMohon diproses, terima kasih!";
-    
-    const fullMessage = messageHeader + itemsList + separator + grandTotal + messageFooter;
-    
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(fullMessage);
-    const whatsappUrl = `https://wa.me/6281234567890?text=${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    setIsProcessing(false);
-    onClose();
+    try {
+      const cartItemIds = cartItems.map((item: CartItemWithProduct) => item.id);
+      await trpc.createOrder.mutate({ cart_item_ids: cartItemIds });
+      
+      alert('🎉 Terima kasih! Pesanan Anda berhasil dibuat. Tim kami akan menghubungi Anda untuk konfirmasi.');
+      onCheckoutSuccess();
+      onClose();
+    } catch (error) {
+      console.error('Failed to create order:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Terjadi kesalahan saat memproses pesanan';
+      alert(`Gagal membuat pesanan: ${errorMessage}`);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
